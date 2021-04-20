@@ -85,7 +85,7 @@
       </v-list>
     </v-navigation-drawer>
     <v-card
-      class="mx-auto mt-16 my-auto"
+      class="mx-auto px-10 px-sm-0 mt-16 my-auto"
       flat
       width="600"
     >
@@ -95,7 +95,7 @@
         Welcome to
       </h2>
       <h1
-        class="text-h2 text-center pt-4"
+        class="text-h4 text-sm-h2 text-center pt-4"
       >
         Automated Tricycle <span class="deep-purple--text">Identification System</span>
       </h1>
@@ -111,6 +111,28 @@
       ></v-autocomplete>
     </v-card>
 
+    <v-dialog
+      v-if="riderIndex !== ''"
+      v-model="dialog"
+      width="400"
+    >
+      <v-card
+        class="mx-auto"
+      >
+        <v-card-title>
+          {{ riders[this.riderIndex].data.name }}
+        </v-card-title>
+        <v-card-text>
+          <p>Plate Number: {{ riders[this.riderIndex].data.plateNumber }}</p>
+          <p>Drivers License ID: {{ riders[this.riderIndex].data.driversLicenseID }}</p>
+          <p>Rider's Phone Number: {{ riders[this.riderIndex].data.phoneNumber }}</p>
+          <p>Residential Address: {{ riders[this.riderIndex].data.resAddress }}</p>
+          <p>Permanent Address: {{ riders[this.riderIndex].data.perAddress }}</p>
+          <p>Date of Birth: {{ riders[this.riderIndex].data.dateOfBirth }}</p>
+          <p>State of Origin: {{ riders[this.riderIndex].data.stateOfOrigin }}</p>
+        </v-card-text>
+      </v-card>
+    </v-dialog>
     <v-footer
       class="footer"
       dark
@@ -135,16 +157,25 @@ export default {
     dialog: false,
     drawer: false,
     search: '',
-    searchArray: []
+    searchArray: [],
+    riderIndex: ''
   }),
   created () {
     this.getRiders()
   },
-  mounted () {
+  /* mounted () {
     this.sortDriversArray()
-  },
+  }, */
   computed: {
     ...mapState(['riders'])
+  },
+  watch: {
+    riders () {
+      this.sortDriversArray()
+    },
+    search () {
+      this.displaySearch(this.search)
+    }
   },
   methods: {
     getRiders () {
@@ -157,13 +188,18 @@ export default {
       this.$emit('signUpPop')
     },
     sortDriversArray () {
-      this.riders.forEach((x) => {
-        this.searchArray.push(x.data.name)
-        this.searchArray.push(x.data.plateNumber)
-        this.searchArray.push(x.data.driversLicenseID)
+      this.riders.forEach((x, index) => {
+        this.searchArray.push(`${index} ${x.data.name}`)
+        this.searchArray.push(`${index} ${x.data.plateNumber}`)
+        this.searchArray.push(`${index} ${x.data.driversLicenseID}`)
       })
+    },
+    displaySearch (search) {
+      const select = search.split(' ')
+      this.riderIndex = select[0]
+      console.log(this.riderIndex)
+      this.dialog = true
     }
-
   }
 }
 </script>

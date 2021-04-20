@@ -5,6 +5,9 @@ import Admin from '../views/Admin/Admin.vue'
 import Overview from '../views/Admin/Overview.vue'
 import addRiders from '../views/Admin/addRiders.vue'
 import editRiders from '../views/Admin/editRiders.vue'
+import Login from '../views/Login.vue'
+import SignUp from '../views/SignUp.vue'
+import { auth } from '../firebase'
 
 Vue.use(VueRouter)
 
@@ -13,6 +16,16 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
+  },
+  {
+    path: '/signup',
+    name: 'SignUp',
+    component: SignUp
   },
   {
     path: '/admin',
@@ -56,6 +69,16 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  const requiresAuth = to.matched.some((x) => x.meta.requiresAuth)
+
+  if (requiresAuth && !auth.currentUser) {
+    next('/login')
+  } else {
+    next()
+  }
 })
 
 export default router

@@ -18,9 +18,11 @@ firebase.initializeApp(firebaseConfig)
 const db = firebase.firestore()
 const auth = firebase.auth()
 const ridersCollection = db.collection('riders')
+const usersCollection = db.collection('users')
 
 export {
   db,
   auth,
-  ridersCollection
+  ridersCollection,
+  usersCollection
 }

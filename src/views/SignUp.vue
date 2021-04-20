@@ -4,23 +4,9 @@
       class="mt-6"
     >
       <div
-        class="text-center"
+        class="text-center pt-10"
       >
-        <img
-          height="75px"
-          width="70px"
-          src="/img/image 1.svg"
-          alt="logo"
-        >
-      </div>
-      <div
-        class="text-center"
-      >
-        <img
-          height="40px"
-          width="120"
-          src="/img/valuehandlersLogo.png"
-          alt="logo">
+        <h1>AT<span class="deep-purple--text">IS</span></h1>
       </div>
     </div>
     <v-card
@@ -30,7 +16,7 @@
       color="#FCF4F8"
     >
       <v-toolbar
-        color="#9B2D86"
+        color="deep-purple"
         dense
         dark
       >
@@ -45,7 +31,7 @@
       >
         <v-text-field
           class="my-3"
-          color="#9B2D86"
+          color="deep-purple"
           outlined
           rounded
           dense
@@ -58,7 +44,7 @@
         />
         <v-text-field
           class="my-3"
-          color="#9B2D86"
+          color="deep-purple"
           outlined
           rounded
           dense
@@ -85,7 +71,7 @@
           >
             <v-btn
               class="mb-2 text-capitalize"
-              color="#9B2D86"
+              color="deep-purple"
               rounded
               dark
               @click="signup()"
@@ -98,7 +84,7 @@
           >
             <v-progress-circular
               indeterminate
-              color="#9B2D86"
+              color="deep-purple"
             ></v-progress-circular>
           </div>
           <!--p>OR</p>

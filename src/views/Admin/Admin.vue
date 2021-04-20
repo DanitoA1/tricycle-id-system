@@ -79,7 +79,6 @@ export default {
     items: [
       { title: 'Overview', icon: 'mdi-view-dashboard', link: '/admin/overview' },
       { title: 'Add Riders', icon: 'mdi-animation-outline', link: '/admin/add-riders' },
-      { title: 'Edit Riders', icon: 'mdi-account-question-outline', link: '/admin/edit-riders' },
       { title: 'Logout', icon: 'mdi-logout', link: '/' }
     ]
   }),
