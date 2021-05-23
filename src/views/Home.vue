@@ -61,24 +61,28 @@
       >
         <v-list-item-group
           v-model="group"
-          active-class="deep-purple--text text--accent-4"
+          active-class=""
         >
           <v-list-item
             @click.stop="signUpModal = true"
+            to="/login"
           >
             <v-list-item-icon>
               <v-icon>mdi-login</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Login</v-list-item-title>
+            <v-list-item-title
+            >Login</v-list-item-title>
           </v-list-item>
 
           <v-list-item
             @click.stop="loginModal = true"
+            to="/signup"
           >
             <v-list-item-icon>
               <v-icon>mdi-account</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Register</v-list-item-title>
+            <v-list-item-title
+            >Register</v-list-item-title>
           </v-list-item>
 
         </v-list-item-group>
